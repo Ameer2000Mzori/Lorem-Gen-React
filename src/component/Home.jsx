@@ -24,8 +24,8 @@ const Home = () => {
           <input
             min={1}
             max={9999}
-            className="text-black rounded-[6px] w-[100px]"
-            type="text"
+            className="text-black rounded-[6px] w-[100px] pr-2 pl-2"
+            type="number"
             value={loremCount}
             onChange={(e) => {
               setLoremCount(e.target.value)

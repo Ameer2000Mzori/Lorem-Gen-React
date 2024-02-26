@@ -1,6 +1,6 @@
 import { LoremIpsum } from 'lorem-ipsum'
 const Genorator = (loremCount) => {
-  if (loremCount >= 10000) {
+  if (loremCount >= 10000 || loremCount <= 0) {
     return 'maximum number of request is 9999'
   } else {
     console.log(loremCount)
