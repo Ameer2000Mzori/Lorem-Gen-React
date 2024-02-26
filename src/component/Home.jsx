@@ -9,6 +9,10 @@ const Home = () => {
     try {
       await navigator.clipboard.writeText(newText)
       setTextCopied('COPIED!')
+
+      setTimeout(() => {
+        setTextCopied('')
+      }, 1000)
     } catch (err) {
       setTextCopied('Failed... copy: ', err)
     }
@@ -18,7 +22,9 @@ const Home = () => {
       <div className="flex flex-col h-[100vh] w-[100vw] text-center items-center justify-end">
         <div className="h-[10%] fixed top-0 left-0 w-[100%] text-center items-center justify-center gap-4 flex flex-row bg-zinc-400 text-white border-b-2 border-white">
           <input
-            className="text-black rounded-[6px]"
+            min={1}
+            max={9999}
+            className="text-black rounded-[6px] w-[100px]"
             type="text"
             value={loremCount}
             onChange={(e) => {
@@ -26,6 +32,7 @@ const Home = () => {
             }}
           />
           <button
+            className="bg-zinc-600 w-[100px] h-[40px]"
             onClick={() => {
               const newLorem = Genorator(loremCount)
               console.log(newLorem, 'in home component')
@@ -34,7 +41,12 @@ const Home = () => {
           >
             get lorems
           </button>
-          <button onClick={handleCopyText}>copy text</button>
+          <button
+            className="bg-zinc-600 w-[100px] h-[40px]"
+            onClick={handleCopyText}
+          >
+            copy text
+          </button>
           <p>{textCopied}</p>
         </div>
         <div className="h-[90%] w-[100%] overflow-auto text-start items-start  flex flex-row bg-zinc-400 text-white p-4">
