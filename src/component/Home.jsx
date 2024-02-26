@@ -3,6 +3,15 @@ import Genorator from './hooks/Genorator.jsx'
 const Home = () => {
   const [newText, setNewText] = useState()
   const [loremCount, setLoremCount] = useState(1)
+
+  const handleCopyText = async () => {
+    try {
+      await navigator.clipboard.writeText(newText)
+      setNewText('TEXT HAS BEEN COPIED')
+    } catch (err) {
+      setNewText('Failed to copy: ', err)
+    }
+  }
   return (
     <>
       <input
@@ -21,7 +30,8 @@ const Home = () => {
       >
         get lorems
       </button>
-      <p>{newText} HEY</p>
+      <button onClick={handleCopyText}>copy text</button>
+      <p>{newText}</p>
     </>
   )
 }
