@@ -1,6 +1,6 @@
 import { LoremIpsum } from 'lorem-ipsum'
-const Genorator = () => {
-  const loremsCount = 2
+const Genorator = (loremCount) => {
+  console.log(loremCount)
   const lorem = new LoremIpsum({
     sentencesPerParagraph: {
       max: 8,
@@ -12,10 +12,11 @@ const Genorator = () => {
     },
   })
 
-  let newLorem = lorem.generateWords(loremsCount)
+  let newLorem = lorem.generateWords(Number(loremCount))
+  newLorem = newLorem.toString()
 
-  console.log(lorem.generateWords(2))
+  console.log(newLorem)
 
-  return { newLorem }
+  return newLorem
 }
 export default Genorator
